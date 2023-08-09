@@ -1,21 +1,24 @@
+// frontend/src/components/PhotoListItem.jsx
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 
+const PhotoListItem = (props) => {
+  const { id, location, imageSource, username, profile } = props.data;
+  const formattedLocation = `${location.city}, ${location.country}`;
 
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
-
-const PhotoListItem = () => {
-  /* Insert React */
+  return (
+    <div className="photo-list-item" data-id={id}>
+      <img src={imageSource} alt={username} className="photo-image" />
+      <div className="photo-details">
+        <div className="photo-username">
+          <img src={profile} alt={`${username}'s profile`} className="profile-image" />
+          {username}
+          <div className="photo-location">{formattedLocation}</div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PhotoListItem;
+
