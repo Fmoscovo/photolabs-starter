@@ -7,13 +7,17 @@ const PhotoListItem = (props) => {
   const formattedLocation = `${location.city}, ${location.country}`;
 
   return (
-    <div className="photo-list-item" data-id={id}>
-      <img src={imageSource} alt={username} className="photo-image" />
-      <div className="photo-details">
-        <div className="photo-username">
-          <img src={profile} alt={`${username}'s profile`} className="profile-image" />
+    <div className="photo-list__item" data-id={id}>
+      <img src={imageSource} alt={username} className="photo-list__image" />
+      <div className="photo-list__user-details">
+        <div className="photo-list__user-info">
+          <img
+            src={profile}
+            alt={`${username}'s profile`}
+            className="photo-list__user-profile"
+          />
           {username}
-          <div className="photo-location">{formattedLocation}</div>
+          <div className="photo-list__user-location">{formattedLocation}</div>
         </div>
       </div>
     </div>
@@ -21,4 +25,3 @@ const PhotoListItem = (props) => {
 };
 
 export default PhotoListItem;
-
