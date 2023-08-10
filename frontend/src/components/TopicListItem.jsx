@@ -1,17 +1,16 @@
+// frontend/src/components/TopicListItem.jsx
+// ------------------- Imports -----------------------
 import React from "react";
+import "../styles/TopicListItem.scss"; // Styles for the TopicListItem component
 
-import "../styles/TopicListItem.scss";
-
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
-
-const TopicListItem = () => {
+// ------------------- TopicListItem Component ------------------------
+// This component displays an individual topic.
+// It takes in 'label' (the name of the topic) and 'slug' (a unique identifier).
+// For now, only 'label' is used for display.
+const TopicListItem = ({ label, slug }) => {
   return (
     <div className="topic-list__item">
-      {/* Insert React */}
+      <span>{label}</span>
     </div>
   );
 };

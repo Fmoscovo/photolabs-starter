@@ -1,7 +1,61 @@
+//frontend/src/styles/TopicList.scss
+
+// Main container for the list of topics.
 .top-nav-bar__topic-list {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-right: 24px;
+  gap: 16px;
+
+  // Individual topic list item styles.
+  .topic-list__item {
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    // Vibrate animation and background color change on hover.
+    &:hover {
+      background-color: #f4f4f4;
+      cursor: pointer;
+      animation: vibrate 0.4s linear both;
+    }
+  }
+
+  // Typography styles for topic names.
+  span {
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #2b2b2b;
+    transition: color 0.2s ease;
+
+    // Styling adjustments for hover state.
+    &:hover {
+      text-decoration: overline;
+      color: #111;
+    }
+  }
+}
+
+// Vibrate Animation for hover effect.
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }

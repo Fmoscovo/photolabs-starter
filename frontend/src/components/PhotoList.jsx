@@ -60,16 +60,12 @@ const sampleDataForPhotoList = [
   },
 ];
 // ------------------- PhotoList Component ------------------------
-// This component renders a list of photos. Currently, it displays the same photo three times.
+// This component renders a list of photos.
 const PhotoList = () => {
-  // Fetching the data for the image with the id of "1"
-  const imageData = sampleDataForPhotoList.find((item) => item.id === "1");
-
   return (
     <ul className="photo-list">
-      {/* Rendering the same photo three times */}
-      {new Array(3).fill(null).map((_, index) => (
-        <PhotoListItem key={index} data={imageData} />
+      {sampleDataForPhotoList.map((photoData) => (
+        <PhotoListItem key={photoData.id} data={photoData} />
       ))}
     </ul>
   );
