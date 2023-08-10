@@ -1,32 +1,17 @@
 // App.jsx
-//-------------------Imports--------------------------------
+
+// ------------------- Imports -----------------------
 import React from "react";
-import PhotoListItem from "./components/PhotoListItem";
-import "./App.scss";
-//----------------------Component-----------------------------
+import PhotoList from "./components/PhotoList"; // Main component to display list of photos
+import "./App.scss"; // Styles for the App component
 
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
-
-//----------------------App-----------------------------------
+// ------------------- App Component ------------------------
 const App = () => {
   return (
-    <div className="App photo-list">
-      {" "}
-      {/* Added the class "photo-list" as per the given note */}
-      {new Array(3).fill(null).map((_, index) => (
-        <PhotoListItem key={index} data={sampleDataForPhotoListItem} />
-      ))}
+    <div className="App">
+      <PhotoList />
     </div>
   );
 };
-//-------------------
+
 export default App;

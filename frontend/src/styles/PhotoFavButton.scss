@@ -1,18 +1,29 @@
 //frontend/src/styles/PhotoFavButton.scss
+
+// Styling for the favorite icon container
 .photo-list__fav-icon {
-  position: absolute;
+  position: absolute; // Allows the icon to be positioned relative to the photo container
   top: 16px;
   left: 16px;
   cursor: pointer;
-  background-color: rgba(238, 238, 238, 0.8); // added a little transparency
+  background-color: rgba(
+    238,
+    238,
+    238,
+    0.8
+  ); // Slightly transparent background for better visibility on various images
   width: 32px;
   height: 32px;
   text-align: center;
   border-radius: 95%;
-  z-index: 1; // Ensure the icon stays on top
+  z-index: 1; // Ensures the favorite icon is always on top of other elements
+  user-select: none; // Prevents the text and elements from being selectable
+  -webkit-user-select: none; // For Safari
+  -ms-user-select: none; // For IE/Edge
 }
 
+// Styling for the favorite icon's SVG
 .photo-list__fav-icon-svg {
   padding: 7px;
-  top: 2px;
+  top: 2px; // Slight adjustment to vertically align the SVG within its container
 }

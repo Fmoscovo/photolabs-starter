@@ -1,41 +1,49 @@
 //frontend/src/styles/PhotoListItem.scss
+
+// Styling for individual photo list items
 .photo-list__item {
   margin: 24px;
   padding: 8px;
   border: 0.5px solid lightgray;
-  border-radius: 8px;
+  border-radius: 8px; // Gives rounded corners
   max-width: fit-content;
-  position: relative;
+  position: relative; // Establishes context for absolutely positioned children
+  width: 300px;
 }
 
+// Styling for the main image in the photo list item
 .photo-list__image {
-  user-select: none;
+  user-select: none; // Prevents the image from being selected
   width: 300px;
   height: 200px;
-  object-fit: cover;
-  border-radius: 8px 8px 0px 0px;
+  object-fit: cover; // Ensures image content scales correctly
+  border-radius: 8px 8px 0px 0px; // Rounds top corners
 }
 
+// Styling for the user profile picture
 .photo-list__user-profile {
-  object-fit: cover;
-  border-radius: 100%;
-  vertical-align: middle;
+  object-fit: cover; // Ensures image content scales correctly
+  border-radius: 100%; // Makes the image circular
+  vertical-align: middle; // Aligns the image with adjacent text
   margin-right: 8px;
   width: 40px;
   height: 40px;
 }
 
+// Container for user information below the image
 .photo-list__user-details {
-  display: flex;
+  display: flex; // Uses flexbox for alignment
 }
 
+// Styling for main user information text
 .photo-list__user-info {
   margin-top: 5px;
-  font-weight: 700;
+  font-weight: 700; // Makes text bold
   font-size: 12px;
   margin-left: 8px;
 }
 
+// Styling for the user's location text
 .photo-list__user-location {
-  color: #838383;
+  color: #838383; // Grey color for the text
 }

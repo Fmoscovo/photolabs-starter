@@ -1,7 +1,11 @@
-import React from "react";
+// frontend/src/components/PhotoList.jsx
 
+// ------------------- Imports -----------------------
+import React from "react";
+import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
+// Sample data of a list of photos.
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -55,11 +59,18 @@ const sampleDataForPhotoList = [
     },
   },
 ];
-
+// ------------------- PhotoList Component ------------------------
+// This component renders a list of photos. Currently, it displays the same photo three times.
 const PhotoList = () => {
+  // Fetching the data for the image with the id of "1"
+  const imageData = sampleDataForPhotoList.find((item) => item.id === "1");
+
   return (
     <ul className="photo-list">
-      {/* Insert React */}
+      {/* Rendering the same photo three times */}
+      {new Array(3).fill(null).map((_, index) => (
+        <PhotoListItem key={index} data={imageData} />
+      ))}
     </ul>
   );
 };
