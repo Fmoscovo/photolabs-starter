@@ -4,10 +4,10 @@
 .photo-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; // Aligns items to the start of the container
+  justify-content: center; // Aligns items to the start of the container
   list-style-type: none; // Removes any default list item styling
-  margin: 0;
-  padding: 0;
+  margin: 20px;
+  padding: 10px;
 }
 
 // Pseudo-element to adjust the layout of the photo list items

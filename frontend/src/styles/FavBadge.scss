@@ -2,7 +2,7 @@
 .fav-badge {
   position: relative;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 150px;
   order: 4;
 
   // Change the default scale to make the heart icon bigger
@@ -10,7 +10,7 @@
 
   // Enlarge the heart icon even more on hover.
   &:hover {
-    transform: scale(1.7); // Enlarging the heart icon on hover.
+    transform: scale(1.9); // Enlarging the heart icon on hover.
     transition: transform 0.3s; // Smoothens the transition
 
     // Targeting the SVG on hover of fav-badge

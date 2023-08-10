@@ -2,31 +2,55 @@
 .top-nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start; // Align items to the start
-  padding: 8px 50px;
+  justify-content: space-between;
+  padding: 8px 50px; // adjust horizontal padding
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
-  flex-wrap: wrap; // Allow wrapping from the start
+  flex-wrap: nowrap;
 }
 
 .top-nav-bar__logo {
-  text-decoration: overline;
-  font-weight: 500;
-  font-size: 24px;
-  color: #111;
-  text-underline-position: auto;
-  margin-right: 5px; // Reduced the margin to bring the signature closer
-  flex-shrink: 0;
-  flex-grow: 0;
   order: 1;
+  font-size: 2rem;
+  margin-right: -2px;
+  text-decoration: overline;
 }
 
 .mySignature {
   order: 2;
-  flex-grow: 0;
-  margin-left: 0; // Ensure there's no left margin pushing it away from the logo
-  margin-right: 50px; // Keeps the existing right margin, adjust as needed
+  font-size: 1rem; // Adjust if the signature is too large
+  margin-left: 10px; // Adjust space between signature and topics
+  margin-right: 50px;
 }
+
+.top-nav-bar__topic-list {
+  order: 3;
+  display: flex;
+  gap: 16px; //adjust the gap between topics
+  justify-content: center;
+  align-items: center;
+  // span {
+  //   font-size: 18px;
+  // }
+}
+
+.fav-badge {
+  order: 4;
+  margin-left: auto;
+  margin-right: 140px; //  Adjust the space between topics and the FavBadge
+}
+
+// @media (max-width: 768px) {
+//   .top-nav-bar {
+//     padding: 8px 20px; // Reduce padding for smaller screens
+//   }
+
+//   .top-nav-bar__logo,
+//   .mySignature,
+//   .top-nav-bar__topic-list span {
+//     font-size: XXXX // Reduce font size for smaller screens
+//   }
+// }

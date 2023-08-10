@@ -13,8 +13,7 @@ import "../styles/HomeRoute.scss";
 const HomeRoute = () => {
   return (
     <div className="home-route">
-      <TopNavigationBar />
-      <TopicList topics={topics} />
+      <TopNavigationBar topics={topics} />
       <PhotoList photos={photos} />
     </div>
   );
