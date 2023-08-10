@@ -1,11 +1,11 @@
 // frontend/src/components/PhotoListItem.jsx
 
-// ------------------- Imports -----------------------
+// --- Imports -----------------------
 import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
-// ------------------- PhotoListItem Component ------------------------
+// --- PhotoListItem Component ------------------------
 // This component renders individual photo items. Each item includes the photo itself, a favorite button, and details about the user who uploaded the photo.
 const PhotoListItem = ({ data }) => {
   return (
@@ -41,5 +41,5 @@ const PhotoListItem = ({ data }) => {
     </div>
   );
 };
-
+// --- Exports -----------------------
 export default PhotoListItem;

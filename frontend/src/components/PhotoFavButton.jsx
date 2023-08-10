@@ -1,11 +1,11 @@
 // frontend/src/components/PhotoFavButton.jsx
 
-// ------------------- Imports -----------------------
+// --- Imports -----------------------
 import React, { useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
-// ------------------- PhotoFavButton Component ------------------------
+// --- PhotoFavButton Component ------------------------
 // This component renders a button for favoriting a photo.
 // Clicking the button toggles its favorited state and provides visual feedback for the first-time favorite.
 const PhotoFavButton = () => {
@@ -42,5 +42,5 @@ const PhotoFavButton = () => {
     </div>
   );
 };
-
+// -------Exports ------------------------
 export default PhotoFavButton;

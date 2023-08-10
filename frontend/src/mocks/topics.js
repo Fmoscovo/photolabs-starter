@@ -1,9 +1,10 @@
+//frontend/src/mocks/topics.js
 const topics = [
   {
     "id": "1",
     "slug": "topic-1",
     "title": "Nature"
-  },  
+  },
   {
     "id": "2",
     "slug": "topic-2",
@@ -18,7 +19,7 @@ const topics = [
     "id": "4",
     "slug": "topic-4",
     "title": "Fashion"
-  },  
+  },
   {
     "id": "5",
     "slug": "topic-5",

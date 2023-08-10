@@ -1,11 +1,12 @@
 // frontend/src/components/TopNavigationBar.jsx
-// ------------------- Imports -----------------------
+
+// --- Imports -----------------------
 import React from "react";
 import "../styles/TopNavigationBar.scss";
 import FavBadge from "./FavBadge"; // Import the FavBadge component.
 import TopicList from "./TopicList"; // Import the TopicList component.
 
-// ------------------- TopNavigationBar Component ------------------------
+// --- TopNavigationBar Component ------------------------
 const TopNavigationBar = () => {
   return (
     <div className="top-nav-bar">
@@ -16,5 +17,5 @@ const TopNavigationBar = () => {
     </div>
   );
 };
-
+// --- Export -----------------------
 export default TopNavigationBar;

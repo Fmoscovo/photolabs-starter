@@ -1,9 +1,9 @@
 // frontend/src/components/FavIcon.jsx
 
-// ------------------- Imports -----------------------
+// --- Imports -----------------------
 import React from "react";
 
-// ------------------- FavIcon Component ------------------------
+// --- FavIcon Component ------------------------
 // This component renders the favorite icon in SVG format.
 // If 'selected' prop is true, the heart is filled with red.
 // The 'displayAlert' prop determines if a yellow circle alert is shown on the icon.
@@ -40,5 +40,5 @@ const FavIcon = ({ displayAlert, selected, onClick }) => {
     </svg>
   );
 };
-
+// ------------------- Export ------------------------
 export default FavIcon;
