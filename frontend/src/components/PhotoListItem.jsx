@@ -16,10 +16,8 @@ const PhotoListItem = ({ data }) => {
         alt={data.user.username}
         className="photo-list__image"
       />
-
       {/* Favorite button for the photo */}
-      <PhotoFavButton />
-
+      <PhotoFavButton photoId={data.id} /> {/* Added photoId prop here */}
       {/* User details section */}
       <div className="photo-list__user-details">
         <div className="photo-list__user-info">

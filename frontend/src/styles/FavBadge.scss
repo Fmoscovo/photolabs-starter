@@ -1,5 +1,3 @@
-// frontend/src/styles/FavBadge.scss
-
 // Main container for the FavBadge component.
 .fav-badge {
   position: relative;
@@ -7,9 +5,12 @@
   margin-right: 20px;
   order: 4;
 
-  // Enlarge the heart icon and change color on hover.
+  // Change the default scale to make the heart icon bigger
+  transform: scale(1.7);
+
+  // Enlarge the heart icon even more on hover.
   &:hover {
-    transform: scale(1.05); // Slightly enlarges the heart icon on hover.
+    transform: scale(1.7); // Enlarging the heart icon on hover.
     transition: transform 0.3s; // Smoothens the transition
 
     // Targeting the SVG on hover of fav-badge
@@ -22,34 +23,27 @@
 
 // Badge count style, typically indicating the number of liked photos.
 .fav-badge__count {
-  background-color: rgb(0, 0, 0);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%; // Using 50% to create a perfect circle.
+  background-color: yellow;
+  width: 10px; // Making the alert ball smaller
+  height: 10px; // Making the alert ball smaller
+  border-radius: 50%;
+  border: 2px solid red;
   position: absolute;
   top: 0%;
   right: 0%;
-  left: 70%;
-  bottom: 60%;
+  left: 75%; // Adjusting the position due to change in size
+  bottom: 65%; // Adjusting the position due to change in size
 
   // Styles for the span containing the count.
   span {
     text-align: center;
-    color: white;
+    color: black;
     width: 100%;
     font-weight: 500;
     position: absolute;
-    top: 50%; // Centering the text both horizontally and vertically.
+    top: 50%;
     left: 50%;
-    transform: translate(
-      -50%,
-      -50%
-    ); // This combined with top/left centers the text.
-    font-size: 16px;
+    transform: translate(-50%, -50%);
+    font-size: 9px; // Adjusting font size to fit the smaller ball
   }
-}
-
-// Change heart color on hover.
-.fav-badge:hover svg {
-  fill: red;
 }

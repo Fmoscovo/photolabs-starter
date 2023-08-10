@@ -3,19 +3,23 @@
 // --- Imports -----------------------
 import React from "react";
 import "../styles/TopNavigationBar.scss";
-import FavBadge from "./FavBadge"; // Import the FavBadge component.
-import TopicList from "./TopicList"; // Import the TopicList component.
+import FavBadge from "./FavBadge";
+import TopicList from "./TopicList";
+import { useFav } from "./FavContext";
 
 // --- TopNavigationBar Component ------------------------
 const TopNavigationBar = () => {
+  const { totalFavCount } = useFav(); // Assuming your context provides this
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <span className="mySignature">&#5792;&#5847;</span> {/* Your signature */}
-      <TopicList /> {/* Include the TopicList component */}
-      <FavBadge /> {/* Component to show total liked photos. */}
+      <span className="mySignature">&#5792;&#5847;</span>
+      <TopicList />
+      <FavBadge isFavPhotoExist={totalFavCount > 0} favCount={totalFavCount} />
     </div>
   );
 };
+
 // --- Export -----------------------
 export default TopNavigationBar;

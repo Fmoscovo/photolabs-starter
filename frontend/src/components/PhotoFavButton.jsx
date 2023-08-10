@@ -1,46 +1,32 @@
 // frontend/src/components/PhotoFavButton.jsx
 
 // --- Imports -----------------------
-import React, { useState } from "react";
+import React from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
+import { useFav } from "./FavContext";
 
 // --- PhotoFavButton Component ------------------------
-// This component renders a button for favoriting a photo.
-// Clicking the button toggles its favorited state and provides visual feedback for the first-time favorite.
-const PhotoFavButton = () => {
-  // State for tracking whether the photo is favorited or not.
-  const [isFavorited, setIsFavorited] = useState(false);
+const PhotoFavButton = ({ photoId }) => {
+  const { isFavorited, toggleFavorite } = useFav();
 
-  // State for tracking first-time favorite.
-  const [isFirstTimeFavorite, setIsFirstTimeFavorite] = useState(true);
-
-  // Handler to toggle favorite status and prevent the event from propagating to other elements.
-  const toggleFavorite = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-
-    // If the photo is favorited for the first time, update the state.
-    if (!isFavorited && isFirstTimeFavorite) {
-      setIsFirstTimeFavorite(false);
-    }
-
-    // Toggle the favorited state.
-    setIsFavorited((prevState) => !prevState);
-    console.log("Icon clicked!"); // Debugging log.
+  const handleFavoriteClick = () => {
+    toggleFavorite(photoId);
   };
 
   return (
     <div className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg">
-        <FavIcon
-          selected={isFavorited}
-          displayAlert={!isFirstTimeFavorite && isFavorited}
-          onClick={toggleFavorite}
-        />
+      <div
+        className="photo-list__fav-icon-svg"
+        onClick={handleFavoriteClick}
+        aria-label={`Toggle favorite for photo ${photoId}`}
+        title={`Toggle favorite for photo ${photoId}`}
+      >
+        <FavIcon selected={isFavorited(photoId)} />
       </div>
     </div>
   );
 };
+
 // -------Exports ------------------------
 export default PhotoFavButton;

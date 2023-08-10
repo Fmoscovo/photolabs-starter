@@ -7,38 +7,41 @@ import FavIcon from "./FavIcon";
 import "../styles/FavBadge.scss";
 
 // ------------------- FavBadge Component ------------------------
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = ({ isFavPhotoExist, favCount }) => {
   // Local state to track hover
   const [isHovered, setIsHovered] = useState(false);
 
-  // Handle click event
+  // Handle click eventconFavBadge
   const handleClick = () => {
-    alert("Favorites feature coming soon!");
+    if (isFavPhotoExist) {
+      alert("You have favorites!"); // Or any other action you'd like
+    } else {
+      alert("No photos have been marked as favorite yet.");
+    }
   };
 
   return (
-    // Clickable badge container
     <div
       className="fav-badge"
       onClick={handleClick}
       title="View favorites"
-      onMouseEnter={() => setIsHovered(true)} // Set hover state to true
-      onMouseLeave={() => setIsHovered(false)} // Set hover state to false
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* FavIcon component with hover and selected states */}
       <FavIcon displayAlert={!!isFavPhotoExist} selected={isHovered} />
+      {isFavPhotoExist && (
+        <div className="fav-badge__count">
+          <span>{favCount}</span>
+        </div>
+      )}
     </div>
   );
 };
 
-// ------------------- Prop Types and Default Props ------------------------
 FavBadge.propTypes = {
-  isFavPhotoExist: PropTypes.bool,
+  isFavPhotoExist: PropTypes.bool.isRequired,
+  favCount: PropTypes.number,
 };
-
-// FavBadge.defaultProps = {
-//   isFavPhotoExist: false,
-// };
 
 // ------------------- Export ------------------------
 export default FavBadge;
