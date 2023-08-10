@@ -1,24 +1,51 @@
+// frontend/src/styles/FavBadge.scss
+
+// Main container for the FavBadge component.
 .fav-badge {
   position: relative;
-}
+  cursor: pointer;
+  margin-right: 20px;
+  order: 4;
 
-.fav-badge__count { 
-background-color: rgb(0, 0, 0);
-width: 20px;
-height: 20px;
-  border-radius: 99px;
+  &:hover {
+    transform: scale(1.05); // Slightly enlarges the heart icon on hover.
+    transition: transform 0.3s; // Smoothens the transition
+
+    // Targeting the SVG on hover of fav-badge
+    svg {
+      fill: red;
+      transition: fill 0.3s; // Add transition for a smooth color change
+    }
+  }
+}
+// Badge count style, typically indicating the number of liked photos.
+.fav-badge__count {
+  background-color: rgb(0, 0, 0);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; // Using 50% to create a perfect circle.
   position: absolute;
   top: 0%;
   right: 0%;
   left: 70%;
   bottom: 60%;
 
+  // Styles for the span containing the count.
   span {
     text-align: center;
     color: white;
     width: 100%;
     font-weight: 500;
     position: absolute;
+    top: 50%; // Centering the text both horizontally and vertically.
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); // This combined with top/left centers the text.
     font-size: 16px;
   }
+}
+.fav-badge:hover svg {
+  fill: red;
 }

@@ -1,13 +1,15 @@
+//frontend/src/styles/TopNavigationBar.scss
 .top-nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 8px;
+  justify-content: flex-start; // Align items to the start
+  padding: 8px 50px;
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
+  flex-wrap: wrap; // Allow wrapping from the start
 }
 
 .top-nav-bar__logo {
@@ -16,5 +18,15 @@
   font-size: 24px;
   color: #111;
   text-underline-position: auto;
-  margin-left: 24px;
+  margin-right: 5px; // Reduced the margin to bring the signature closer
+  flex-shrink: 0;
+  flex-grow: 0;
+  order: 1;
+}
+
+.mySignature {
+  order: 2;
+  flex-grow: 0;
+  margin-left: 0; // Ensure there's no left margin pushing it away from the logo
+  margin-right: 50px; // Keeps the existing right margin, adjust as needed
 }

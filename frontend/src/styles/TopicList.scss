@@ -8,6 +8,8 @@
   align-items: center;
   margin-right: 24px;
   gap: 16px;
+  flex-wrap: wrap;
+  order: 3;
 
   // Individual topic list item styles.
   .topic-list__item {

@@ -42,11 +42,6 @@ const sampleDataForTopicList = [
     slug: "topic-7",
     title: "Fashion",
   },
-  {
-    id: "8",
-    slug: "topic-8",
-    title: "Drawings",
-  },
 ];
 
 // ------------------- TopicList Component ------------------------
