@@ -1,11 +1,37 @@
 //frontend/src/styles/PhotoDetailsModal.scss
+@keyframes polygon-in-opposing-corners {
+  from {
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
+  }
+  to {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+}
+
+[data-transition-style="in:polygon:opposing-corners"] {
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) polygon-in-opposing-corners both;
+}
+@keyframes polygon-out-opposing-corners {
+  from {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+  to {
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
+  }
+}
+
+[data-transition-style="out:polygon:opposing-corners"] {
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) polygon-out-opposing-corners
+    both;
+}
+
 .photo-details-modal {
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -40%);
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
   height: 80%;
   width: 55%;
   overflow-y: scroll;
@@ -57,4 +83,22 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); // Adds a semi-transparent black background
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; // Just below the modal
 }
