@@ -27,3 +27,10 @@
   padding: 7px;
   top: 2px; // Slight adjustment to vertically align the SVG within its container
 }
+
+.photo-list__fav-icon-svg circle {
+  position: absolute;
+  top: -5px; // Adjust these values to place the circle in the desired location
+  right: -5px;
+  z-index: 2; // Ensures the alert circle is above the heart icon
+}

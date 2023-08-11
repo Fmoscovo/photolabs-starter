@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
   const [isClosing, setIsClosing] = useState(false); // <-- Declare isClosing state
@@ -50,7 +52,7 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
           className="photo-details-modal__close-button"
           onClick={handleClose}
         >
-          <img src={closeSymbol} alt="close symbol" />
+          <FontAwesomeIcon icon={faTimesCircle} />
         </button>
 
         {/* Main Photo */}
@@ -61,9 +63,14 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
             className="photo-details-modal--image"
           />
           <PhotoFavButton photoId={photo.id} />
+
+          {/* Location
+          {photo.location && photo.location.title ? (
+            <div className="photo-location">{photo.location.title}</div>
+          ) : null} */}
         </div>
 
-        <h2 className="photo-details-modal--header">Similar Photos</h2>
+        <h2 className="photo-details-modal--header"> Similar Photos</h2>
 
         {/* Display Similar Photos */}
         <div className="photo-details-modal--similar-photos">

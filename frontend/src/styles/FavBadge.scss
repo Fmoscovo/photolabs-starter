@@ -2,7 +2,7 @@
 .fav-badge {
   position: relative;
   cursor: pointer;
-  margin-right: 150px;
+  margin-right: -24px;
   order: 4;
 
   // Change the default scale to make the heart icon bigger
@@ -23,7 +23,7 @@
 
 // Badge count style, typically indicating the number of liked photos.
 .fav-badge__count {
-  background-color: yellow;
+  background-color: rgb(248, 248, 88);
   width: 10px; // Making the alert ball smaller
   height: 10px; // Making the alert ball smaller
   border-radius: 50%;
