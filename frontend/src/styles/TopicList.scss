@@ -15,27 +15,48 @@
   .topic-list__item {
     padding: 8px 16px;
     border-radius: 8px;
+    transition: background-color 0.2s ease; // Added background color transition.
 
     // Vibrate animation and background color change on hover.
     &:hover {
       background-color: #f4f4f4;
       cursor: pointer;
       animation: vibrate 0.4s linear both;
+
+      // Nested span styles during hover.
+      span {
+        text-decoration: overline;
+        color: #111; // Black color on hover
+      }
+    }
+
+    // Typography styles for topic names.
+    span {
+      font-size: 18px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+
+      // Default text color for light mode.
+      color: #2b2b2b;
     }
   }
+}
 
-  // Typography styles for topic names.
-  span {
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: 500;
-    color: #2b2b2b;
-    transition: color 0.2s ease;
-
-    // Styling adjustments for hover state.
-    &:hover {
-      text-decoration: overline;
-      color: #111;
+// Add dark mode styling
+.dark-mode {
+  .top-nav-bar__topic-list {
+    .topic-list__item {
+      &:hover {
+        background-color: #2b2b2b; // Adjust if necessary to a suitable dark hover color.
+        span {
+          color: #ddd; // slightly dimmer color for hover in dark mode
+        }
+      }
+      span {
+        // Text color adjustment for dark mode.
+        color: #fff;
+      }
     }
   }
 }

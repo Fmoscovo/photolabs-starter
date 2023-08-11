@@ -56,8 +56,15 @@
   text-decoration: none;
   display: inline-block;
   font-size: 24px;
+  opacity: 1;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
+
   z-index: 1100; // to make sure the button is above everything else.
+
+  &:hover {
+    color: red;
+  }
 }
 
 .photo-details-modal__images {
@@ -167,6 +174,22 @@
   height: 100%;
 }
 
+.dark-mode .photo-details-modal {
+  background-color: #444;
+  color: #eee;
+}
+
+.dark-mode .photo-details-modal__close-button {
+  color: #eee;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.dark-mode .photo-details-modal__header {
+  color: #eee;
+}
 // .photo-location {
 //   margin-top: 10px; // Adjust as needed
 //   font-size: 1.2em; // Adjust as needed
