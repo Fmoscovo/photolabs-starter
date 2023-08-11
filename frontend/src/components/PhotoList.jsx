@@ -7,11 +7,15 @@ import "../styles/PhotoList.scss";
 
 // --- PhotoList Component ------------------------
 // This component displays a list of photos using PhotoListItem components.
-const PhotoList = ({ photos }) => {
+const PhotoList = ({ photos, setIsModalOpen }) => {
   return (
     <ul className="photo-list">
       {photos.map((photoData) => (
-        <PhotoListItem key={photoData.id} data={photoData} />
+        <PhotoListItem
+          key={photoData.id}
+          data={photoData}
+          setIsModalOpen={setIsModalOpen}
+        />
       ))}
     </ul>
   );

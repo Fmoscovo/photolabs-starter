@@ -6,18 +6,23 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 // --- PhotoListItem Component ------------------------
-// This component renders individual photo items. Each item includes the photo itself, a favorite button, and details about the user who uploaded the photo.
-const PhotoListItem = ({ data }) => {
+const PhotoListItem = ({ data, setIsModalOpen }) => {
   return (
-    <div className="photo-list__item" data-id={data.id}>
+    <div
+      className="photo-list__item"
+      data-id={data.id}
+      onClick={() => setIsModalOpen(true)} // <-- Added onClick handler here
+    >
       {/* Displaying the photo */}
       <img
         src={data.urls.regular}
         alt={data.user.username}
         className="photo-list__image"
       />
+
       {/* Favorite button for the photo */}
-      <PhotoFavButton photoId={data.id} /> {/* Added photoId prop here */}
+      <PhotoFavButton photoId={data.id} />
+
       {/* User details section */}
       <div className="photo-list__user-details">
         <div className="photo-list__user-info">
@@ -27,6 +32,7 @@ const PhotoListItem = ({ data }) => {
             alt={`${data.user.name}'s profile`}
             className="photo-list__user-profile"
           />
+
           {/* User's name */}
           {data.user.name}
 
@@ -39,5 +45,6 @@ const PhotoListItem = ({ data }) => {
     </div>
   );
 };
+
 // --- Exports -----------------------
 export default PhotoListItem;

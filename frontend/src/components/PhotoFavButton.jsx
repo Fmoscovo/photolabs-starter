@@ -10,7 +10,8 @@ import { useFav } from "./FavContext";
 const PhotoFavButton = ({ photoId }) => {
   const { isFavorited, toggleFavorite } = useFav();
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (event) => {
+    event.stopPropagation(); // Prevent event from bubbling up
     toggleFavorite(photoId);
   };
 
