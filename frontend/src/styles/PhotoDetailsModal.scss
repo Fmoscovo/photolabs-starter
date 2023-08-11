@@ -37,19 +37,24 @@
   overflow-y: scroll;
   border-radius: 12px;
   z-index: 1000;
+  overflow-y: auto;
+  padding-top: 20px;
 }
 
+// Adjust this part to position close button at top right corner of the modal
 .photo-details-modal__close-button {
-  background-color: white;
+  position: absolute;
+  top: 2px; // This places the button above the main photo.
+  right: -1px; // Adjust this if needed to move the button left or right.
+  background-color: transparent;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 16px;
-  margin-top: 16px;
+  z-index: 1100; // to make sure the button is above everything else.
 }
 
 .photo-details-modal__images {
@@ -83,6 +88,7 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+  padding-left: 16px;
 }
 
 .modal-container {
@@ -101,4 +107,65 @@
   justify-content: center;
   align-items: center;
   z-index: 999; // Just below the modal
+}
+
+// Styling for the main large image.
+.photo-details-modal--image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.photo-details-modal--similar-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 16px;
+
+  .photo-container {
+    flex: 1 1 calc(50% - 16px); // Half the width with the gap considered
+    max-width: calc(50% - 16px);
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .photo-list__fav-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      z-index: 1;
+    }
+  }
+}
+
+// Styling specifically for the main photo's favorite button:
+.photo-container.main-photo {
+  position: relative;
+
+  .photo-list__fav-icon {
+    position: absolute;
+    top: 24px;
+    left: 21px;
+    z-index: 1;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%; // this is sometimes required depending on the structure of your page.
+}
+
+@media screen and (min-width: 768px) {
+  .photo-details-modal--similar-photo {
+    flex: 1 1 33.333%;
+    max-width: calc(33.333% - 16px);
+  }
 }

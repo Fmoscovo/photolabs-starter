@@ -13,6 +13,8 @@ const PhotoFavButton = ({ photoId }) => {
   const handleFavoriteClick = (event) => {
     event.stopPropagation(); // Prevent event from bubbling up
     toggleFavorite(photoId);
+    //log the action
+    console.log(`Toggled favorite status for photo with ID: ${photoId}`);
   };
 
   return (
