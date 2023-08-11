@@ -6,12 +6,12 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 // --- PhotoListItem Component ------------------------
-const PhotoListItem = ({ data, setIsModalOpen }) => {
+const PhotoListItem = ({ data, onPhotoClick }) => {
   return (
     <div
       className="photo-list__item"
       data-id={data.id}
-      onClick={() => setIsModalOpen(true)} // <-- Added onClick handler here
+      onClick={() => onPhotoClick(data)} // <-- Added onClick handler here
     >
       {/* Displaying the photo */}
       <img
@@ -47,4 +47,4 @@ const PhotoListItem = ({ data, setIsModalOpen }) => {
 };
 
 // --- Exports -----------------------
-export default PhotoListItem;
+export default React.memo(PhotoListItem);

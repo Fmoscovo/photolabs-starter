@@ -1,10 +1,14 @@
 //frontend/src/routes/PhotoDetailsModal.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 
-const PhotoDetailsModal = ({ closeModal: closeHandler }) => {
-  const [isClosing, setIsClosing] = useState(false);
+const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
+  const [isClosing, setIsClosing] = useState(false); // <-- Declare isClosing state
+
+  useEffect(() => {
+    console.log("PhotoDetailsModal Log:", photo); // <-- Log the photo details
+  }, [photo]);
 
   const handleClose = () => {
     setIsClosing(true);
