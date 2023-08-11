@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
+import UserDetails from "../components/UserDetails";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
   const [isClosing, setIsClosing] = useState(false);
-  const [theme, setTheme] = useState("light"); // <-- New state for theme
+  const [theme, setTheme] = useState("light"); // Consider using this state if you're implementing dark mode
 
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
@@ -17,8 +18,6 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
   };
 
   useEffect(() => {
-    console.log("PhotoDetailsModal Log:", photo);
-
     if (photo) {
       document.body.classList.add("no-scroll");
     } else {
@@ -76,10 +75,9 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
             className="photo-details-modal--image"
           />
           <PhotoFavButton photoId={photo.id} />
+          <UserDetails user={photo.user} location={photo.location} />
         </div>
-
-        <h2 className="photo-details-modal--header"> Similar Photos</h2>
-
+        <h2 className="photo-details-modal--header">Similar Photos</h2>
         <div className="photo-details-modal--similar-photos">
           {Object.values(photo.similar_photos).map((similarPhoto) => (
             <div className="photo-container" key={similarPhoto.id}>
