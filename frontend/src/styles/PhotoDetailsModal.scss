@@ -48,8 +48,8 @@
 // Adjust this part to position close button at top right corner of the modal
 .photo-details-modal__close-button {
   position: absolute;
-  top: 2px; // This places the button above the main photo.
-  right: -1px; // Adjust this if needed to move the button left or right.
+  top: -3px; // This places the button above the main photo.
+  right: -6px; // Adjust this if needed to move the button left or right.
   background-color: transparent;
   border: none;
   color: #333;
@@ -88,9 +88,18 @@
   align-items: center;
 }
 
-.photo-details-modal__photographer-details {
+.photo-details-modal__photographer-details,
+#uniquePhotographerDetails {
   display: flex;
-  font-size: 16px;
+  align-items: center; // ensures vertical centering of content
+  gap: 10px; // gives space between items
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 .photo-details-modal__header {
@@ -129,7 +138,6 @@
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 16px;
-  padding: 16px;
   box-sizing: border-box;
 }
 
@@ -141,11 +149,11 @@
 
   .photo-container {
     flex: 1 1 calc(33.333% - 16px);
-    height: 200px;
+    height: auto;
     position: relative;
     img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
     }

@@ -5,7 +5,6 @@ import PhotoFavButton from "./PhotoFavButton";
 import UserDetails from "./UserDetails";
 import "../styles/PhotoListItem.scss";
 
-
 const PhotoListItem = ({ data, onPhotoClick }) => {
   return (
     <div

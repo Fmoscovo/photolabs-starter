@@ -1,5 +1,4 @@
 //frontend/src/routes/PhotoDetailsModal.jsx
-
 import React, { useState, useEffect } from "react";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
@@ -9,7 +8,7 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
   const [isClosing, setIsClosing] = useState(false);
-  const [theme, setTheme] = useState("light"); // Consider using this state if you're implementing dark mode
+  const [theme, setTheme] = useState("light");
 
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
@@ -86,6 +85,23 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
                 alt={similarPhoto.user.username}
               />
               <PhotoFavButton photoId={similarPhoto.id} />
+              <div
+                className="photo-details-modal__photographer-details"
+                id="uniquePhotographerDetails"
+              >
+                {similarPhoto.user.profile_image?.small && (
+                  <img
+                    src={similarPhoto.user.profile_image.small}
+                    alt={`${similarPhoto.user.username}'s profile`}
+                  />
+                )}
+
+                <UserDetails
+                  className="similar-user-details"
+                  user={similarPhoto.user}
+                  location={similarPhoto.location}
+                />
+              </div>
             </div>
           ))}
         </div>
