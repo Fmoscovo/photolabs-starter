@@ -3,6 +3,7 @@
 import React, { useEffect, useReducer } from "react";
 import TopNavigationBar from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
+import { shuffle } from "lodash";
 import "../styles/HomeRoute.scss";
 
 const ACTIONS = {
@@ -12,7 +13,9 @@ const ACTIONS = {
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state, photos: action.payload.photos };
+      // Shuffle the array of photos randomly
+      const shuffledPhotos = shuffle(action.payload.photos);
+      return { ...state, photos: shuffledPhotos };
     default:
       return state;
   }
@@ -30,7 +33,7 @@ const HomeRoute = () => {
       .then((data) => {
         dispatch({
           type: ACTIONS.SET_PHOTO_DATA,
-          payload: { photos: data }, // Use the whole data as photos
+          payload: { photos: data },
         });
       })
       .catch((error) => {

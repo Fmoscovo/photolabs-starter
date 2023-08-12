@@ -11,6 +11,7 @@ import "../styles/PhotoList.scss";
  *
  * @param {Array} props.photos - Array of photo objects.
  */
+
 const PhotoList = ({ photos }) => {
   // State for modal visibility and selected photo
   const [isModalOpen, setIsModalOpen] = useState(false);

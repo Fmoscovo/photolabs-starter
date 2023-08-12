@@ -27,6 +27,7 @@ const PhotoListItem = ({ data, onPhotoClick }) => {
       />
       <PhotoFavButton photoId={data.id} />
       <div className="photo-list__name-location">
+        {/* Pass the user and location data from the API */}
         <UserDetails user={data.user} location={data.location} />
       </div>
     </div>
