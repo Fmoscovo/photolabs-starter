@@ -1,30 +1,29 @@
 //frontend/src/styles/PhotoListItem.scss
-
 // Styling for individual photo list items
 .photo-list__item {
   margin: 24px;
   padding: 8px;
   border: 0.5px solid lightgray;
-  border-radius: 8px; // Gives rounded corners
+  border-radius: 8px; // Rounded corners
   max-width: fit-content;
-  position: relative; // Establishes context for absolutely positioned children
+  position: relative; // For absolutely positioned children
   width: 300px;
 }
 
 // Styling for the main image in the photo list item
 .photo-list__image {
-  user-select: none; // Prevents the image from being selected
+  user-select: none; // Prevents selection
   width: 300px;
   height: 200px;
-  object-fit: cover; // Ensures image content scales correctly
-  border-radius: 8px 8px 0px 0px; // Rounds top corners
+  object-fit: cover; // Content scaling
+  border-radius: 8px 8px 0px 0px; // Top corners rounding
 }
 
 // Styling for the user profile picture
 .photo-list__user-profile {
-  object-fit: cover; // Ensures image content scales correctly
-  border-radius: 100%; // Makes the image circular
-  vertical-align: middle; // Aligns the image with adjacent text
+  object-fit: cover; // Content scaling
+  border-radius: 100%; // Circular shape
+  vertical-align: middle; // Alignment with text
   margin-right: 8px;
   width: 40px;
   height: 40px;
@@ -32,18 +31,17 @@
 
 // Container for user information below the image
 .photo-list__user-details {
-  display: flex; // Uses flexbox for alignment
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 // Styling for main user information text
 .photo-list__user-info {
-  display: flex; // To have elements side by side
+  display: flex;
   margin-top: 5px;
   align-items: center;
-  font-weight: 700; // Makes text bold
-  font-weight: 600;
+  font-weight: 600; // Bold text
   font-size: 14px;
   color: #444;
   font-family: "Open Sans", sans-serif;
@@ -55,11 +53,11 @@
   font-family: "Dancing Script", cursive;
   font-weight: 400;
   color: #575757;
-  margin: 1px 0px 0px 0px;
+  margin: 1px 0 0 0; // Simplified notation
 }
 
 .photo-list__name-location {
-  display: flex; // Uses flexbox for alignment
-  align-items: center; // Vertically center-align items
-  justify-content: start; // Align items to the start
+  display: flex;
+  align-items: center; // Vertical alignment
+  justify-content: flex-start; // Alignment to the start
 }

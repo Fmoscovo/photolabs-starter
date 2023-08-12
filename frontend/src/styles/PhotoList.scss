@@ -1,11 +1,11 @@
 //frontend/src/styles/PhotoList.scss
 
-// Styling for the main photo list container
+// Main photo list container styling
 .photo-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; // Aligns items to the start of the container
-  list-style-type: none; // Removes any default list item styling
+  justify-content: center; // Center the items horizontally
+  list-style-type: none; // Removes default list styling
   margin: 20px;
   padding: 10px;
 }
@@ -13,13 +13,13 @@
 // Pseudo-element to adjust the layout of the photo list items
 .photo-list:after {
   content: "";
-  flex: 0 1 30%; // Flex grow, shrink, and basis values
+  flex: 0 1 30%; // Provides a flexible width for the layout
   margin: 5px; // Spacing around the pseudo-element
 }
 
-// Styling for individual photo list items
+// Individual photo list item styling
 .photo-list li {
-  list-style-type: none; // Removes any default list item styling
-  margin: 0 10px 20px 0; // Adjust for spacing between items
+  list-style-type: none; // Removes default list styling
+  margin: 0 10px 20px 0; // Provides spacing between items
   padding: 0;
 }

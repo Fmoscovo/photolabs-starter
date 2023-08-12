@@ -1,21 +1,31 @@
 // frontend/src/components/PhotoList.jsx
-import React, { useState, useCallback } from "react"; // <-- Import useState
+
+import React, { useState, useCallback } from "react";
 import PhotoListItem from "./PhotoListItem";
 import PhotoDetailsModal from "../routes/PhotoDetailsModal";
 import "../styles/PhotoList.scss";
 
+/**
+ * PhotoList Component
+ * Renders a list of photos and provides an option to view details of a selected photo in a modal.
+ *
+ * @param {Array} props.photos - Array of photo objects.
+ */
 const PhotoList = ({ photos }) => {
+  // State for modal visibility and selected photo
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); // <-- New state for selected photo
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  // Handler for when a photo is clicked
   const handlePhotoClick = useCallback((photoData) => {
     setSelectedPhoto(photoData);
     setIsModalOpen(true);
   }, []);
 
+  // Handler to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedPhoto(null); // reset the selected photo
+    setSelectedPhoto(null);
   };
 
   return (
@@ -25,7 +35,7 @@ const PhotoList = ({ photos }) => {
           <PhotoListItem
             key={photoData.id}
             data={photoData}
-            onPhotoClick={handlePhotoClick} // <-- Pass the new handler
+            onPhotoClick={handlePhotoClick}
           />
         ))}
       </ul>

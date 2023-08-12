@@ -1,16 +1,24 @@
-// frontend/src/components/PhotoListItem.jsx
-
+//frontend/src/components/PhotoListItem.jsx
 import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import UserDetails from "./UserDetails";
 import "../styles/PhotoListItem.scss";
 
+/**
+ * PhotoListItem Component
+ * Renders individual photos with associated user details and favorite options.
+ *
+ * @param {Object} data - The photo data.
+ * @param {Function} onPhotoClick - The handler for photo clicks.
+ */
 const PhotoListItem = ({ data, onPhotoClick }) => {
+  const handleItemClick = () => onPhotoClick(data);
+
   return (
     <div
       className="photo-list__item"
       data-id={data.id}
-      onClick={() => onPhotoClick(data)}
+      onClick={handleItemClick}
     >
       <img
         src={data.urls.regular}

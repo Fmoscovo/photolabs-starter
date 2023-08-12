@@ -1,13 +1,16 @@
 // frontend/src/components/FavIcon.jsx
 
-// --- Imports -----------------------
 import React from "react";
 
-// --- FavIcon Component ------------------------
-// This component renders the favorite icon in SVG format.
-// If 'selected' prop is true, the heart is filled with red.
-// The 'displayAlert' prop determines if a yellow circle alert is shown on the icon.
+/**
+ * FavIcon Component
+ * Renders the favorite icon in SVG format.
+ * - If 'selected', the heart is filled with red.
+ * - If 'displayAlert', a yellow circle alert is shown on the icon.
+ */
 const FavIcon = ({ displayAlert, selected, onClick }) => {
+  const fillColor = selected ? "#C80000" : "#EEEEEE";
+
   return (
     <svg
       width="20"
@@ -17,17 +20,15 @@ const FavIcon = ({ displayAlert, selected, onClick }) => {
       xmlns="http://www.w3.org/2000/svg"
       onClick={onClick}
     >
-      {/* If 'selected' is true, it fills the heart with red color. */}
       <path
-        fill={selected ? "#C80000" : "#EEEEEE"}
+        fill={fillColor}
         d="M11 18C11 18 1 12.5909 1 6.02273C1 4.8616 1.41649 3.73633 2.17862 2.83838C2.94075 1.94043 4.00143 1.32526 5.1802 1.09755C6.35897 0.869829 7.58301 1.04363 8.64406 1.58938C9.70512 2.13512 10.5376 3.0191 11 4.09092C11.4624 3.0191 12.2949 2.13512 13.3559 1.58938C14.417 1.04363 15.641 0.869829 16.8198 1.09755C17.9986 1.32526 19.0593 1.94043 19.8214 2.83838C20.5835 3.73633 21 4.8616 21 6.02273C21 12.5909 11 18 11 18Z"
         stroke="#C80000"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      {/* Display alert circle if 'displayAlert' is true. */}
-      {!!displayAlert && (
+      {displayAlert && (
         <circle
           cx="21"
           cy="4"
@@ -40,5 +41,5 @@ const FavIcon = ({ displayAlert, selected, onClick }) => {
     </svg>
   );
 };
-// ------------------- Export ------------------------
+
 export default FavIcon;

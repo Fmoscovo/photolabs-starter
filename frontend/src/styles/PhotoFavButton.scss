@@ -2,35 +2,36 @@
 
 // Styling for the favorite icon container
 .photo-list__fav-icon {
-  position: absolute; // Allows the icon to be positioned relative to the photo container
-  top: 16px;
-  left: 16px;
-  cursor: pointer;
-  background-color: rgba(
-    238,
-    238,
-    238,
-    0.8
-  ); // Slightly transparent background for better visibility on various images
-  width: 32px;
-  height: 32px;
-  text-align: center;
-  border-radius: 95%;
-  z-index: 1; // Ensures the favorite icon is always on top of other elements
-  user-select: none; // Prevents the text and elements from being selectable
-  -webkit-user-select: none; // For Safari
-  -ms-user-select: none; // For IE/Edge
-}
-
-// Styling for the favorite icon's SVG
-.photo-list__fav-icon-svg {
-  padding: 7px;
-  top: 2px; // Slight adjustment to vertically align the SVG within its container
-}
-
-.photo-list__fav-icon-svg circle {
   position: absolute;
-  top: -5px; // Adjust these values to place the circle in the desired location
-  right: -5px;
-  z-index: 2; // Ensures the alert circle is above the heart icon
+  top: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  z-index: 1;
+  user-select: none;
+
+  // Styling for the favorite icon's button
+  &-svg {
+    padding: 0.4375rem;
+    top: 0.125rem;
+    background-color: rgba(238, 238, 238, 0.8);
+    border: none; // Removes default button border
+    border-radius: 95%; // Makes the button round
+    cursor: pointer; // Hand pointer on hover
+    width: 2rem;
+    height: 2rem;
+
+    // Removes button focus styles which can be distracting
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    circle {
+      position: absolute;
+      top: -0.3125rem;
+      right: -0.3125rem;
+      z-index: 2;
+    }
+  }
 }

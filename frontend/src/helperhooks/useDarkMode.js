@@ -1,16 +1,12 @@
 //frontedn/src/helperhooks/useDarkMode.js
+
 import { useLocalStorage, useMediaQuery, useUpdateEffect } from "usehooks-ts";
 
+// Query to check if the operating system prefers dark mode
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
-// interface UseDarkModeOutput {
-//   isDarkMode: boolean;
-//   toggle: () => void;
-//   enable: () => void;
-//   disable: () => void;
-// }
-
-export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
+// Custom hook for managing dark mode
+export function useDarkMode(defaultValue) {
   // Check if the operating system prefers dark mode
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
 
@@ -18,7 +14,7 @@ export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
   const [isDarkMode, setDarkMode] = useLocalStorage(
     "usehooks-ts-dark-mode",
     defaultValue ?? isDarkOS ?? false
-);
+  );
 
   // Update darkMode if the OS preference changes
   useUpdateEffect(() => {

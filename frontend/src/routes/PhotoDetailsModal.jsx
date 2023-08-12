@@ -6,6 +6,13 @@ import UserDetails from "../components/UserDetails";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * @function PhotoDetailsModal
+ * @param {Object} props
+ * @param {Function} props.closeModal - The handler to close the modal.
+ * @param {Object} props.photo - The photo object containing details.
+ * @returns {React.Element} Rendered component.
+ */
 const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [theme, setTheme] = useState("light");
@@ -95,7 +102,6 @@ const PhotoDetailsModal = ({ closeModal: closeHandler, photo }) => {
                     alt={`${similarPhoto.user.username}'s profile`}
                   />
                 )}
-
                 <UserDetails
                   className="similar-user-details"
                   user={similarPhoto.user}

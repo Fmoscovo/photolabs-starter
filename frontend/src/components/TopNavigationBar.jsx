@@ -1,6 +1,5 @@
 // frontend/src/components/TopNavigationBar.jsx
 
-// --- Imports -----------------------
 import React from "react";
 import "../styles/TopNavigationBar.scss";
 import FavBadge from "./FavBadge";
@@ -9,11 +8,12 @@ import { useFav } from "./FavContext";
 import topics from "mocks/topics";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb as regularLightbulb } from "@fortawesome/free-regular-svg-icons";
-import { useDarkMode } from "../helperhooks/useDarkMode"; // <-- Import the custom hook
+import { faImage as farImage } from "@fortawesome/free-regular-svg-icons"; // Add this line for the image icon
+import { useDarkMode } from "../helperhooks/useDarkMode";
 
 const TopNavigationBar = () => {
   const { totalFavCount } = useFav();
-  const { isDarkMode, toggle } = useDarkMode(); // <-- Use the custom hook
+  const { isDarkMode, toggle } = useDarkMode();
 
   React.useEffect(() => {
     if (isDarkMode) {
@@ -25,6 +25,11 @@ const TopNavigationBar = () => {
 
   return (
     <div className={`top-nav-bar ${isDarkMode ? "dark-theme" : ""}`}>
+      {/* Add FontAwesomeIcon for the image icon */}
+      <FontAwesomeIcon
+        icon={farImage}
+        style={{ color: "#000000", marginRight: "8px" }}
+      />
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <span className="mySignature">&#5792;&#5847;</span>
       <button className="icon-button" onClick={toggle}>
@@ -33,8 +38,7 @@ const TopNavigationBar = () => {
           style={{ color: "#005eff" }}
           size="2x"
         />
-      </button>{" "}
-      {/* Moved the Toggle button here */}
+      </button>
       <TopicList topics={topics} />
       <FavBadge isFavPhotoExist={totalFavCount > 0} favCount={totalFavCount} />
     </div>

@@ -1,49 +1,53 @@
+//frontend/src/styles/FavBadge.scss
+
 // Main container for the FavBadge component.
 .fav-badge {
   position: relative;
   cursor: pointer;
-  margin-right: -24px;
-  order: 4;
+  margin-right: -24px; // Adjusts position relative to its sibling components
+  order: 4; // Adjusts ordering among flex items
 
-  // Change the default scale to make the heart icon bigger
-  transform: scale(1.7);
+  // Scaling properties
+  transform: scale(1.7); // Default scale to enlarge the heart icon
+  transition: transform 0.3s; // Smooth transition for scaling
 
-  // Enlarge the heart icon even more on hover.
+  // Enlarge heart icon on hover
   &:hover {
-    transform: scale(1.9); // Enlarging the heart icon on hover.
-    transition: transform 0.3s; // Smoothens the transition
+    transform: scale(1.9);
 
-    // Targeting the SVG on hover of fav-badge
+    // Change SVG color on hover
     svg {
       fill: red;
-      transition: fill 0.3s; // Add transition for a smooth color change
+      transition: fill 0.3s; // Smooth transition for fill color change
     }
   }
 }
 
-// Badge count style, typically indicating the number of liked photos.
+// Badge count style, indicating the number of liked photos.
 .fav-badge__count {
-  background-color: rgb(248, 248, 88);
-  width: 10px; // Making the alert ball smaller
-  height: 10px; // Making the alert ball smaller
-  border-radius: 50%;
-  border: 2px solid red;
   position: absolute;
   top: 0%;
   right: 0%;
-  left: 75%; // Adjusting the position due to change in size
-  bottom: 65%; // Adjusting the position due to change in size
+  left: 75%; // Adjusted to place the badge relative to the heart icon
+  bottom: 65%; // Adjusted to place the badge relative to the heart icon
 
-  // Styles for the span containing the count.
+  width: 10px;
+  height: 10px;
+  background-color: rgb(248, 248, 88);
+  border-radius: 50%;
+  border: 2px solid red;
+
+  // Centered count within the badge
   span {
-    text-align: center;
-    color: black;
-    width: 100%;
-    font-weight: 500;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 9px; // Adjusting font size to fit the smaller ball
+    transform: translate(-50%, -50%); // Perfectly center the text
+
+    width: 100%;
+    font-size: 9px; // Fits the text within the small badge
+    font-weight: 500;
+    text-align: center;
+    color: black;
   }
 }

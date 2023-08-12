@@ -1,23 +1,26 @@
+//frontend/src/components/UserDetails.jsx
+
 import React from "react";
 import "../styles/PhotoListItem.scss";
 
-const UserDetails = ({ user, location }) => (
+const UserDetails = ({
+  user: { profile, name },
+  location: { city, country },
+}) => (
   <div className="photo-list__user-info">
-    {/* User profile picture */}
+    {/* Display the user's profile picture */}
     <img
-      src={user.profile}
-      alt={`${user.name}'s profile`}
+      src={profile}
+      alt={`${name}'s profile`}
       className="photo-list__user-profile"
     />
 
     <div>
-      {/* User's name */}
-      <div>{user.name}</div>
+      {/* Display the user's name */}
+      <div>{name}</div>
 
-      {/* User's location */}
-      <div className="photo-list__user-location">
-        {`${location.city}, ${location.country}`}
-      </div>
+      {/* Display the user's location */}
+      <div className="photo-list__user-location">{`${city}, ${country}`}</div>
     </div>
   </div>
 );

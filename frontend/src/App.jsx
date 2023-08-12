@@ -1,12 +1,16 @@
 // frontend/src/App.jsx
 
-// ------------------- Imports -----------------------
+// React imports
 import React, { useState } from "react";
+
+// Component imports
 import HomeRoute from "./components/HomeRoute";
 import { FavProvider } from "./components/FavContext";
-import "./App.scss"; // Styles for the App component.
 
-// ------------------- App Component ------------------------
+// Styles imports
+import "./App.scss";
+
+// Main App component
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -17,5 +21,5 @@ const App = () => {
     </FavProvider>
   );
 };
-// ------------------- Export--------------------------------
+
 export default App;

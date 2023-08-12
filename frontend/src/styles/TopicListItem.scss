@@ -4,16 +4,14 @@
 .topic-list__item {
   line-height: 24px;
   margin-left: 24px;
-  padding: 8px 16px; // Padding for more space.
-  border-radius: 8px; // Rounded corners for a modern look.
-  transition: box-shadow 0.2s ease, transform 0.2s ease; // Smooth transitions.
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 
-  // Subtle shadow for a 3D feel, and scale transformation for a slight zoom on hover.
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: scale(1.05);
 
-    // Move the overline effect here to trigger when hovering over the entire item.
     span {
       text-decoration: overline;
       color: #111;
@@ -21,12 +19,10 @@
     }
   }
 
-  // Typography for the topic name.
   span {
     font-size: 18px;
-    text-decoration: none;
     font-weight: 500;
     color: #2b2b2b;
-    transition: color 0.2s ease; // Smooth color transition.
+    transition: color 0.2s ease;
   }
 }

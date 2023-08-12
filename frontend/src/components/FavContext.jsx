@@ -2,23 +2,27 @@
 
 import React, { createContext, useReducer, useContext } from "react";
 
-//Define the context
+// Define the context
 export const FavContext = createContext();
 
-//Initial state
+// Initial state
 const initialState = {
   favoritedPhotos: [],
 };
 
-//Reducer function
+// Action types
+const ADD_FAVORITE = "ADD_FAVORITE";
+const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+
+// Reducer function
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_FAVORITE":
+    case ADD_FAVORITE:
       return {
         ...state,
         favoritedPhotos: [...state.favoritedPhotos, action.payload],
       };
-    case "REMOVE_FAVORITE":
+    case REMOVE_FAVORITE:
       return {
         ...state,
         favoritedPhotos: state.favoritedPhotos.filter(
@@ -30,7 +34,7 @@ const reducer = (state, action) => {
   }
 };
 
-//Define the provider component
+// Define the provider component
 export const FavProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -41,10 +45,10 @@ export const FavProvider = ({ children }) => {
   );
 };
 
-//Custom hook to consume the context
+// Custom hook to consume the context
 export const useFav = () => {
   const [state, dispatch] = useContext(FavContext);
-  if (state === undefined) {
+  if (!state) {
     throw new Error("useFav must be used within a FavProvider");
   }
 
@@ -52,9 +56,9 @@ export const useFav = () => {
 
   const toggleFavorite = (photoId) => {
     if (isFavorited(photoId)) {
-      dispatch({ type: "REMOVE_FAVORITE", payload: photoId });
+      dispatch({ type: REMOVE_FAVORITE, payload: photoId });
     } else {
-      dispatch({ type: "ADD_FAVORITE", payload: photoId });
+      dispatch({ type: ADD_FAVORITE, payload: photoId });
     }
   };
 
