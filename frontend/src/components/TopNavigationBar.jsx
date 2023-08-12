@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb as regularLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { faImage as farImage } from "@fortawesome/free-regular-svg-icons"; // Add this line for the image icon
 import { useDarkMode } from "../helperhooks/useDarkMode";
+import { useChangingColor } from "../helperhooks/useChangingColor";
+import { useChangingLightbulbColor } from "../helperhooks/useChangingLightbulbColor";
 
 const TopNavigationBar = () => {
   const { totalFavCount } = useFav();
@@ -23,19 +25,22 @@ const TopNavigationBar = () => {
     }
   }, [isDarkMode]);
 
+  const currentColor = useChangingColor();
+  const currentLightbulbColor = useChangingLightbulbColor();
+
   return (
     <div className={`top-nav-bar ${isDarkMode ? "dark-theme" : ""}`}>
-      {/* Add FontAwesomeIcon for the image icon */}
       <FontAwesomeIcon
+        className="pulse-animation"
         icon={farImage}
-        style={{ color: "#000000", marginRight: "8px" }}
+        style={{ color: currentColor, marginRight: "8px" }}
       />
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <span className="mySignature">&#5792;&#5847;</span>
       <button className="icon-button" onClick={toggle}>
         <FontAwesomeIcon
           icon={regularLightbulb}
-          style={{ color: "#005eff" }}
+          style={{ color: currentLightbulbColor }}
           size="2x"
         />
       </button>

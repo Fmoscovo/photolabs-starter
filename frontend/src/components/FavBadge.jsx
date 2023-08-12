@@ -17,7 +17,7 @@ const FavBadge = ({ isFavPhotoExist, favCount }) => {
 
   return (
     <div
-      className="fav-badge"
+      className={`fav-badge ${isFavPhotoExist ? "has-favorites" : ""}`}
       onClick={handleClick}
       title="View favorites"
       onMouseEnter={() => setIsHovered(true)}

@@ -1,11 +1,27 @@
 //frontend/src/styles/TopNavigationBar.scss
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
 // Main styling for the top navigation bar
 .top-nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 50px; // Adjusted horizontal padding for spacing
+  padding: 8px 40px; // Adjusted horizontal padding for spacing
   align-items: center;
 
   // Cross-browser box-shadow for subtle depth
