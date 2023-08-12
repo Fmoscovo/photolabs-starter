@@ -15,46 +15,42 @@
   .topic-list__item {
     padding: 8px 16px;
     border-radius: 8px;
-    transition: background-color 0.2s ease; // Added background color transition.
+    transition: background-color 0.2s ease, transform 0.2s ease; // Added transform transition for the scale effect
 
-    // Vibrate animation and background color change on hover.
     &:hover {
       background-color: #f4f4f4;
+      transform: scale(1.05); // Added for zoom-in effect
       cursor: pointer;
       animation: vibrate 0.4s linear both;
 
       // Nested span styles during hover.
       span {
         text-decoration: overline;
-        color: #111; // Black color on hover
+        color: #111;
       }
     }
 
-    // Typography styles for topic names.
     span {
       font-size: 18px;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
-
-      // Default text color for light mode.
       color: #2b2b2b;
     }
   }
 }
 
-// Add dark mode styling
+// Dark mode styling
 .dark-mode {
   .top-nav-bar__topic-list {
     .topic-list__item {
       &:hover {
-        background-color: #2b2b2b; // Adjust if necessary to a suitable dark hover color.
+        background-color: #2b2b2b;
         span {
-          color: #ddd; // slightly dimmer color for hover in dark mode
+          color: #ddd;
         }
       }
       span {
-        // Text color adjustment for dark mode.
         color: #fff;
       }
     }
@@ -80,5 +76,42 @@
   }
   100% {
     transform: translate(0);
+  }
+}
+
+// Individual colors for each topic on hover
+.topic-list__item:nth-child(1):hover {
+  background-color: #e57373; // You can replace with your color
+}
+.topic-list__item:nth-child(2):hover {
+  background-color: #81c784; // You can replace with your color
+}
+.topic-list__item:nth-child(3):hover {
+  background-color: #64b5f6; // You can replace with your color
+}
+.topic-list__item:nth-child(4):hover {
+  background-color: #ba68c8; // You can replace with your color
+}
+.topic-list__item:nth-child(5):hover {
+  background-color: #ffb74d; // You can replace with your color
+}
+
+.dark-mode {
+  .top-nav-bar__topic-list {
+    .topic-list__item:nth-child(1):hover {
+      background-color: #b71c1c; // Darker shade for dark mode
+    }
+    .topic-list__item:nth-child(2):hover {
+      background-color: #1b5e20; // Darker shade for dark mode
+    }
+    .topic-list__item:nth-child(3):hover {
+      background-color: #0d47a1; // Darker shade for dark mode
+    }
+    .topic-list__item:nth-child(4):hover {
+      background-color: #4a148c; // Darker shade for dark mode
+    }
+    .topic-list__item:nth-child(5):hover {
+      background-color: #e65100; // Darker shade for dark mode
+    }
   }
 }

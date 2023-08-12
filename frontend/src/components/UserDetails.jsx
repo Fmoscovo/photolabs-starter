@@ -1,20 +1,18 @@
-// frontend/src/components/UserDetails.jsx
-
 import React from "react";
-import "../styles/PhotoListItem.scss"; // Styles are already defined for the user details
+import "../styles/PhotoListItem.scss";
 
 const UserDetails = ({ user, location }) => (
-  <div className="photo-list__user-details">
-    <div className="photo-list__user-info">
-      {/* User profile picture */}
-      <img
-        src={user.profile}
-        alt={`${user.name}'s profile`}
-        className="photo-list__user-profile"
-      />
+  <div className="photo-list__user-info">
+    {/* User profile picture */}
+    <img
+      src={user.profile}
+      alt={`${user.name}'s profile`}
+      className="photo-list__user-profile"
+    />
 
+    <div>
       {/* User's name */}
-      {user.name}
+      <div>{user.name}</div>
 
       {/* User's location */}
       <div className="photo-list__user-location">

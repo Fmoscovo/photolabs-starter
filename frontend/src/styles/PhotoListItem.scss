@@ -33,17 +33,33 @@
 // Container for user information below the image
 .photo-list__user-details {
   display: flex; // Uses flexbox for alignment
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 // Styling for main user information text
 .photo-list__user-info {
+  display: flex; // To have elements side by side
   margin-top: 5px;
+  align-items: center;
   font-weight: 700; // Makes text bold
-  font-size: 12px;
-  margin-left: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+  font-family: "Open Sans", sans-serif;
 }
 
 // Styling for the user's location text
 .photo-list__user-location {
-  color: #838383; // Grey color for the text
+  font-size: 10px;
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+  color: #575757;
+  margin: 1px 0px 0px 0px;
+}
+
+.photo-list__name-location {
+  display: flex; // Uses flexbox for alignment
+  align-items: center; // Vertically center-align items
+  justify-content: start; // Align items to the start
 }

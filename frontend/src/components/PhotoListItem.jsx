@@ -18,7 +18,9 @@ const PhotoListItem = ({ data, onPhotoClick }) => {
         className="photo-list__image"
       />
       <PhotoFavButton photoId={data.id} />
-      <UserDetails user={data.user} location={data.location} />
+      <div className="photo-list__name-location">
+        <UserDetails user={data.user} location={data.location} />
+      </div>
     </div>
   );
 };
