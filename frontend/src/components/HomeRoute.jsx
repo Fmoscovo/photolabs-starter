@@ -5,6 +5,10 @@ import TopNavigationBar from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 import { shuffle } from "lodash";
 import "../styles/HomeRoute.scss";
+import {
+  ACTIONS as TOPIC_ACTIONS,
+  topicReducer,
+} from "../helperhooks/TopicListReducer";
 
 const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
@@ -27,6 +31,10 @@ const HomeRoute = () => {
     topics: [],
   });
 
+  const [topicState, topicDispatch] = useReducer(topicReducer, {
+    topics: [], // Initialize with empty topics array
+  });
+
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
       .then((response) => response.json())
@@ -39,11 +47,29 @@ const HomeRoute = () => {
       .catch((error) => {
         console.error("Error fetching photo data:", error);
       });
+
+    fetch("http://localhost:8001/api/topics")
+      .then((response) => response.json())
+      .then((data) => {
+        // Convert topic IDs to strings
+        const topicsWithStrings = data.map((topic) => ({
+          ...topic,
+          id: topic.id.toString(),
+        }));
+
+        topicDispatch({
+          type: TOPIC_ACTIONS.SET_TOPIC_DATA,
+          payload: { topics: topicsWithStrings },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching topic data:", error);
+      });
   }, []);
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={state.topics} />
+      <TopNavigationBar topics={topicState.topics} />
       <PhotoList photos={state.photos} />
     </div>
   );

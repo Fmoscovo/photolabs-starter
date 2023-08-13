@@ -13,7 +13,7 @@ import { useDarkMode } from "../helperhooks/useDarkMode";
 import { useChangingColor } from "../helperhooks/useChangingColor";
 import { useChangingLightbulbColor } from "../helperhooks/useChangingLightbulbColor";
 
-const TopNavigationBar = () => {
+const TopNavigationBar = ({ topics }) => {
   const { totalFavCount } = useFav();
   const { isDarkMode, toggle } = useDarkMode();
 
