@@ -22,6 +22,8 @@ function reducer(state, action) {
       return { ...state, photos: shuffledPhotos };
     case ACTIONS.SET_SELECTED_TOPIC:
       return { ...state, selectedTopic: action.payload };
+    case ACTIONS.SET_LOADING:
+      return { ...state, loading: action.payload };
     default:
       return state;
   }
@@ -40,7 +42,26 @@ const HomeRoute = () => {
 
   const handleTopicSelect = (topicId) => {
     console.log("Selected topic ID:", topicId);
-    dispatch({ type: ACTIONS.SET_SELECTED_TOPIC, payload: topicId });
+    fetchPhotosByTopic(topicId);
+  };
+
+  const fetchPhotosByTopic = (topicId) => {
+    dispatch({ type: ACTIONS.SET_LOADING, payload: true });
+
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({
+          type: ACTIONS.SET_PHOTO_DATA,
+          payload: { photos: data },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching photos by topic:", error);
+      })
+      .finally(() => {
+        dispatch({ type: ACTIONS.SET_LOADING, payload: false });
+      });
   };
 
   useEffect(() => {
@@ -81,8 +102,11 @@ const HomeRoute = () => {
         topics={topicState.topics}
         onSelectTopic={handleTopicSelect}
       />
-
-      <PhotoList photos={state.photos} selectedTopic={state.selectedTopic} />
+      {state.loading ? (
+        <div>Loading...</div>
+      ) : (
+        <PhotoList photos={state.photos} selectedTopic={state.selectedTopic} />
+      )}
     </div>
   );
 };
