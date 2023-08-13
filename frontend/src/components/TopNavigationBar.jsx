@@ -13,7 +13,7 @@ import { useDarkMode } from "../helperhooks/useDarkMode";
 import { useChangingColor } from "../helperhooks/useChangingColor";
 import { useChangingLightbulbColor } from "../helperhooks/useChangingLightbulbColor";
 
-const TopNavigationBar = ({ topics }) => {
+const TopNavigationBar = ({ topics, onSelectTopic }) => {
   const { totalFavCount } = useFav();
   const { isDarkMode, toggle } = useDarkMode();
 
@@ -44,7 +44,8 @@ const TopNavigationBar = ({ topics }) => {
           size="2x"
         />
       </button>
-      <TopicList topics={topics} />
+      <TopicList topics={topics} onSelectTopic={onSelectTopic} />
+
       <FavBadge isFavPhotoExist={totalFavCount > 0} favCount={totalFavCount} />
     </div>
   );

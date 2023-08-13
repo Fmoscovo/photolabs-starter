@@ -12,8 +12,8 @@ import "../styles/TopicListItem.scss";
  *
  * Note: A 'slug' prop can be added in the future as a unique identifier if needed.
  */
-const TopicListItem = ({ label }) => (
-  <div className="topic-list__item">
+const TopicListItem = ({ label, onSelect }) => (
+  <div className="topic-list__item" onClick={onSelect}>
     <span>{label}</span>
   </div>
 );

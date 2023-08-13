@@ -11,10 +11,15 @@ import "../styles/TopicList.scss";
  *
  * @param {Array} topics - An array of topic objects to render.
  */
-const TopicList = ({ topics = [] }) => (
+const TopicList = ({ topics = [], onSelectTopic }) => (
   <div className="top-nav-bar__topic-list">
     {topics.map((topic) => (
-      <TopicListItem key={topic.id} label={topic.title} slug={topic.slug} />
+      <TopicListItem
+        key={topic.id}
+        label={topic.title}
+        slug={topic.slug}
+        onSelect={() => onSelectTopic(topic.id)} // Pass the selected topic ID to the handler
+      />
     ))}
   </div>
 );

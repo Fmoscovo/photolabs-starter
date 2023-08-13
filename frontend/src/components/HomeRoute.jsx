@@ -1,6 +1,6 @@
 // frontend/src/components/HomeRoute.jsx
 
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import TopNavigationBar from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 import { shuffle } from "lodash";
@@ -20,6 +20,8 @@ function reducer(state, action) {
       // Shuffle the array of photos randomly
       const shuffledPhotos = shuffle(action.payload.photos);
       return { ...state, photos: shuffledPhotos };
+    case ACTIONS.SET_SELECTED_TOPIC:
+      return { ...state, selectedTopic: action.payload };
     default:
       return state;
   }
@@ -29,11 +31,17 @@ const HomeRoute = () => {
   const [state, dispatch] = useReducer(reducer, {
     photos: [],
     topics: [],
+    selectedTopic: null, // Add selectedTopic to the state
   });
 
   const [topicState, topicDispatch] = useReducer(topicReducer, {
     topics: [], // Initialize with empty topics array
   });
+
+  const handleTopicSelect = (topicId) => {
+    console.log("Selected topic ID:", topicId);
+    dispatch({ type: ACTIONS.SET_SELECTED_TOPIC, payload: topicId });
+  };
 
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
@@ -69,8 +77,12 @@ const HomeRoute = () => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topicState.topics} />
-      <PhotoList photos={state.photos} />
+      <TopNavigationBar
+        topics={topicState.topics}
+        onSelectTopic={handleTopicSelect}
+      />
+
+      <PhotoList photos={state.photos} selectedTopic={state.selectedTopic} />
     </div>
   );
 };
