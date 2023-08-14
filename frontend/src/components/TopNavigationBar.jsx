@@ -5,7 +5,6 @@ import "../styles/TopNavigationBar.scss";
 import FavBadge from "./FavBadge";
 import TopicList from "./TopicList";
 import { useFav } from "./FavContext";
-import topics from "mocks/topics";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb as regularLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { faImage as farImage } from "@fortawesome/free-regular-svg-icons"; // Add this line for the image icon

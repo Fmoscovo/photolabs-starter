@@ -27,7 +27,7 @@ const TopicList = ({ topics = [], onSelectTopic }) => (
 TopicList.propTypes = {
   topics: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired, // Changed from .string to .number
       title: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
     })

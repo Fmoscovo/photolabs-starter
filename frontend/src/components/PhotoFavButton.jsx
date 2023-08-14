@@ -26,13 +26,8 @@ const PhotoFavButton = ({ photoId }) => {
   const handleFavoriteClick = (event) => {
     event.stopPropagation();
 
-    if (!isPhotoFavorited) {
-      setDisplayAlert(true);
-      toggleFavorite(photoId);
-    } else {
-      setDisplayAlert(false);
-      toggleFavorite(photoId);
-    }
+    setDisplayAlert(!isPhotoFavorited);
+    toggleFavorite(photoId);
   };
 
   return (
