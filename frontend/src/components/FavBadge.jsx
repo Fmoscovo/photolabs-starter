@@ -1,11 +1,15 @@
 // frontend/src/components/FavBadge.jsx
 
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import FavIcon from "./FavIcon";
+import { useFav } from "./FavContext";
 import "../styles/FavBadge.scss";
 
-const FavBadge = ({ isFavPhotoExist, favCount }) => {
+const FavBadge = () => {
+  const { likedPhotos } = useFav();
+
+  const isFavPhotoExist = likedPhotos.length > 0;
+  const favCount = likedPhotos.length;
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
@@ -31,15 +35,6 @@ const FavBadge = ({ isFavPhotoExist, favCount }) => {
       )}
     </div>
   );
-};
-
-FavBadge.propTypes = {
-  isFavPhotoExist: PropTypes.bool.isRequired,
-  favCount: PropTypes.number,
-};
-
-FavBadge.defaultProps = {
-  favCount: 0,
 };
 
 export default FavBadge;

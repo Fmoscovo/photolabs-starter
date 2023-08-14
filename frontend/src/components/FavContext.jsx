@@ -1,74 +1,43 @@
 //frontend/src/components/FavContext.jsx
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-import React, { createContext, useReducer, useContext } from "react";
+const FavContext = createContext();
 
-// Define the context
-export const FavContext = createContext();
-
-// Initial state
-const initialState = {
-  favoritedPhotos: [],
-};
-
-// Action types
-const ADD_FAVORITE = "ADD_FAVORITE";
-const REMOVE_FAVORITE = "REMOVE_FAVORITE";
-
-// Reducer function
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ADD_FAVORITE:
-      return {
-        ...state,
-        favoritedPhotos: [...state.favoritedPhotos, action.payload],
-      };
-    case REMOVE_FAVORITE:
-      return {
-        ...state,
-        favoritedPhotos: state.favoritedPhotos.filter(
-          (photoId) => photoId !== action.payload
-        ),
-      };
-    default:
-      return state;
-  }
-};
-
-// Define the provider component
 export const FavProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [likedPhotos, setLikedPhotos] = useState([]);
+
+  useEffect(() => {
+    const storedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
+    setLikedPhotos([...new Set(storedPhotos)]);
+  }, []);
+
+  const isFavorited = (photoId) => likedPhotos.includes(photoId);
+
+  const toggleFavorite = (photoId) => {
+    console.log("Toggling favorite for photo ID:", photoId);
+    console.log("Current liked photos:", likedPhotos);
+
+    let updatedPhotos = [];
+    if (isFavorited(photoId)) {
+      updatedPhotos = likedPhotos.filter((id) => id !== photoId);
+      console.log("Removing photo ID from liked photos:", updatedPhotos);
+    } else {
+      updatedPhotos = [...likedPhotos, photoId];
+      console.log("Adding photo ID to liked photos:", updatedPhotos);
+    }
+
+    localStorage.setItem("likedPhotos", JSON.stringify(updatedPhotos));
+    const storedPhotos = JSON.parse(localStorage.getItem("likedPhotos"));
+    setLikedPhotos(storedPhotos);
+  };
 
   return (
-    <FavContext.Provider value={[state, dispatch]}>
+    <FavContext.Provider value={{ likedPhotos, isFavorited, toggleFavorite }}>
       {children}
     </FavContext.Provider>
   );
 };
 
-// Custom hook to consume the context
 export const useFav = () => {
-  const [state, dispatch] = useContext(FavContext);
-  if (!state) {
-    throw new Error("useFav must be used within a FavProvider");
-  }
-
-  const isFavorited = (photoId) => state.favoritedPhotos.includes(photoId);
-
-  const toggleFavorite = (photoId) => {
-    if (isFavorited(photoId)) {
-      dispatch({ type: REMOVE_FAVORITE, payload: photoId });
-    } else {
-      dispatch({ type: ADD_FAVORITE, payload: photoId });
-    }
-  };
-
-  const totalFavCount = state.favoritedPhotos.length;
-
-  return {
-    isFavorited,
-    toggleFavorite,
-    totalFavCount,
-    state,
-    dispatch,
-  };
+  return useContext(FavContext);
 };
