@@ -1,3 +1,4 @@
+//backend/src/application.js
 const fs = require("fs");
 const path = require("path");
 
@@ -12,6 +13,11 @@ const db = require("./db")
 
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
+
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request on ${req.path}`);
+  next();
+});
 
 function read(file) {
   return new Promise((resolve, reject) => {

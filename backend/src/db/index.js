@@ -1,3 +1,5 @@
+
+//backend/src/db/index.js
 const pg = require("pg");
 
 const client = new pg.Client({

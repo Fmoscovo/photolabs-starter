@@ -1,3 +1,4 @@
+//backend/src/routes/photos.js
 const router = require("express").Router();
 
 module.exports = db => {
@@ -8,7 +9,7 @@ module.exports = db => {
     const serverUrl = `${protocol}://${host}:${port}`;
 
     db.query(`
-      SELECT 
+      SELECT
       json_agg(
           json_build_object(
             'id', photo.id,
@@ -26,7 +27,7 @@ module.exports = db => {
               'country', photo.country
             ),
             'similar_photos', (
-              SELECT 
+              SELECT
                 json_agg(
                   json_build_object(
                     'id', similar_photo.id,
@@ -58,6 +59,23 @@ module.exports = db => {
     `).then(({ rows }) => {
       response.json(rows[0].photo_data);
     });
+  });
+
+  router.get("/liked-photos", async (request, response) => {
+    const likedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
+
+    // Fetch the details of the liked photos from the database using the IDs in the likedPhotos array
+    const query = `
+      SELECT * FROM photo
+      WHERE id IN (${likedPhotos.join(",")});
+    `;
+
+    try {
+      const result = await db.query(query);
+      response.json(result.rows);
+    } catch (error) {
+      response.status(500).json({ error: "Database error: " + error.message });
+    }
   });
 
   return router;
