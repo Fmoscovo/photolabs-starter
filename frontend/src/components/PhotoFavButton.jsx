@@ -8,7 +8,9 @@ import { useFav } from "./FavContext";
 const PhotoFavButton = ({ photoId }) => {
   const { isFavorited, toggleFavorite } = useFav();
   const [displayAlert, setDisplayAlert] = useState(false);
-  const isPhotoFavorited = isFavorited(photoId);
+  const likedPhotosOnInit =
+    JSON.parse(localStorage.getItem("likedPhotos")) || [];
+  const isPhotoFavorited = likedPhotosOnInit.includes(photoId);
 
   useEffect(() => {
     // Retrieve liked photo IDs from Local Storage on component mount
