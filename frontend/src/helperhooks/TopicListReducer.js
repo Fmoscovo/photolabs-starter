@@ -4,6 +4,7 @@ const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
 };
 
+// Reducer for the topic list
 function topicReducer(state, action) {
   switch (action.type) {
     case ACTIONS.SET_TOPIC_DATA:

@@ -5,6 +5,14 @@ import FavIcon from "./FavIcon";
 import { useFav } from "./FavContext";
 import "../styles/FavBadge.scss";
 
+/**
+ * FavBadge Component
+ *
+ * This component displays a badge with the count of liked photos.
+ * When there are no liked photos, it displays a default badge without the count.
+ *
+ * @returns {JSX.Element} Rendered component
+ */
 const FavBadge = () => {
   const { likedPhotos } = useFav();
 
@@ -12,6 +20,12 @@ const FavBadge = () => {
   const favCount = likedPhotos.length;
   const [isHovered, setIsHovered] = useState(false);
 
+  /**
+   * handleClick
+   *
+   * Handles click event on the badge. Displays a message based on whether
+   * the user has any favorite photos.
+   */
   const handleClick = () => {
     const message = isFavPhotoExist
       ? "You have favorites!"

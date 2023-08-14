@@ -7,7 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 /**
- * @function PhotoDetailsModal
+ * PhotoDetailsModal Component
+ * Displays detailed information about a photo in a modal. This includes the main photo,
+ * its user details, and similar photos. The modal can be closed either by pressing the
+ * close button, by clicking outside the modal or by pressing the escape key.
+ *
  * @param {Object} props
  * @param {Function} props.closeModal - The handler to close the modal.
  * @param {Object} props.photo - The photo object containing details.

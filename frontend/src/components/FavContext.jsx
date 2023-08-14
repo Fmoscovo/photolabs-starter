@@ -1,11 +1,17 @@
-//frontend/src/components/FavContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Create a context for Favorites
 const FavContext = createContext();
 
+/**
+ * FavProvider Component
+ * Provides access to user's favorited photos, their current favorite status,
+ * and functions to toggle favorite status.
+ */
 export const FavProvider = ({ children }) => {
   const [likedPhotos, setLikedPhotos] = useState([]);
 
+  // Load liked photos from local storage on component mount
   useEffect(() => {
     const storedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
     setLikedPhotos([...new Set(storedPhotos)]);
@@ -15,20 +21,16 @@ export const FavProvider = ({ children }) => {
 
   const toggleFavorite = (photoId) => {
     console.log("Toggling favorite for photo ID:", photoId);
-    console.log("Current liked photos:", likedPhotos);
 
     let updatedPhotos = [];
     if (isFavorited(photoId)) {
       updatedPhotos = likedPhotos.filter((id) => id !== photoId);
-      console.log("Removing photo ID from liked photos:", updatedPhotos);
     } else {
       updatedPhotos = [...likedPhotos, photoId];
-      console.log("Adding photo ID to liked photos:", updatedPhotos);
     }
 
     localStorage.setItem("likedPhotos", JSON.stringify(updatedPhotos));
-    const storedPhotos = JSON.parse(localStorage.getItem("likedPhotos"));
-    setLikedPhotos(storedPhotos);
+    setLikedPhotos(updatedPhotos);
   };
 
   return (
@@ -38,6 +40,7 @@ export const FavProvider = ({ children }) => {
   );
 };
 
+// Custom hook to use the Favorites context
 export const useFav = () => {
   return useContext(FavContext);
 };

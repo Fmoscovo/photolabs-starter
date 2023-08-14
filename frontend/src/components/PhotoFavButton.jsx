@@ -1,23 +1,26 @@
-// frontend/src/components/PhotoFavButton.jsx
-
 import React, { useState, useEffect } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 import { useFav } from "./FavContext";
 
+/**
+ * PhotoFavButton Component
+ * Renders a button that toggles a photo's favorite status.
+ *
+ * @param {string} photoId - The ID of the photo.
+ */
 const PhotoFavButton = ({ photoId }) => {
   const { isFavorited, toggleFavorite } = useFav();
   const [displayAlert, setDisplayAlert] = useState(false);
+
+  // Check if the photo was favorited on initialization
   const likedPhotosOnInit =
     JSON.parse(localStorage.getItem("likedPhotos")) || [];
   const isPhotoFavorited = likedPhotosOnInit.includes(photoId);
 
   useEffect(() => {
-    // Retrieve liked photo IDs from Local Storage on component mount
-    const likedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
-
-    // Set displayAlert based on whether the photo is already favorited
-    setDisplayAlert(likedPhotos.includes(photoId));
+    // Check for display alert based on initial liked photos
+    setDisplayAlert(isPhotoFavorited);
   }, [photoId]);
 
   const handleFavoriteClick = (event) => {
@@ -26,20 +29,7 @@ const PhotoFavButton = ({ photoId }) => {
     if (!isPhotoFavorited) {
       setDisplayAlert(true);
       toggleFavorite(photoId);
-
-      // Update Local Storage with the new liked photo ID
-      const likedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
-      localStorage.setItem(
-        "likedPhotos",
-        JSON.stringify([...likedPhotos, photoId])
-      );
     } else {
-      // Remove the photo ID from Local Storage if unliked
-      const likedPhotos = JSON.parse(localStorage.getItem("likedPhotos")) || [];
-      const updatedLikedPhotos = likedPhotos.filter((id) => id !== photoId);
-      localStorage.setItem("likedPhotos", JSON.stringify(updatedLikedPhotos));
-
-      // Update the displayAlert and liked state
       setDisplayAlert(false);
       toggleFavorite(photoId);
     }

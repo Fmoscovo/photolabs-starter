@@ -12,14 +12,15 @@ import {
 
 const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_SELECTED_TOPIC: "SET_SELECTED_TOPIC",
+  SET_LOADING: "SET_LOADING",
 };
 
+// Reducer for managing the state of the HomeRoute component
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.SET_PHOTO_DATA:
-      // Shuffle the array of photos randomly
-      const shuffledPhotos = shuffle(action.payload.photos);
-      return { ...state, photos: shuffledPhotos };
+      return { ...state, photos: shuffle(action.payload.photos) };
     case ACTIONS.SET_SELECTED_TOPIC:
       return { ...state, selectedTopic: action.payload };
     case ACTIONS.SET_LOADING:
@@ -29,22 +30,20 @@ function reducer(state, action) {
   }
 }
 
+/**
+ * HomeRoute Component
+ * Fetches and displays the list of photos and topics.
+ */
 const HomeRoute = () => {
   const [state, dispatch] = useReducer(reducer, {
     photos: [],
-    topics: [],
-    selectedTopic: null, // Add selectedTopic to the state
+    selectedTopic: null,
   });
-
   const [topicState, topicDispatch] = useReducer(topicReducer, {
-    topics: [], // Initialize with empty topics array
+    topics: [],
   });
 
-  const handleTopicSelect = (topicId) => {
-    console.log("Selected topic ID:", topicId);
-    fetchPhotosByTopic(topicId);
-  };
-
+  // Fetch photos based on selected topic
   const fetchPhotosByTopic = (topicId) => {
     dispatch({ type: ACTIONS.SET_LOADING, payload: true });
 
@@ -64,6 +63,11 @@ const HomeRoute = () => {
       });
   };
 
+  const handleTopicSelect = (topicId) => {
+    fetchPhotosByTopic(topicId);
+  };
+
+  // Fetch photos and topics on component mount
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
       .then((response) => response.json())
@@ -80,15 +84,9 @@ const HomeRoute = () => {
     fetch("http://localhost:8001/api/topics")
       .then((response) => response.json())
       .then((data) => {
-        // Convert topic IDs to strings
-        const topicsWithStrings = data.map((topic) => ({
-          ...topic,
-          id: topic.id.toString(),
-        }));
-
         topicDispatch({
           type: TOPIC_ACTIONS.SET_TOPIC_DATA,
-          payload: { topics: topicsWithStrings },
+          payload: { topics: data },
         });
       })
       .catch((error) => {

@@ -7,23 +7,22 @@ import "../styles/PhotoList.scss";
 
 /**
  * PhotoList Component
- * Renders a list of photos and provides an option to view details of a selected photo in a modal.
+ * Renders a list of photos and displays details in a modal when a photo is clicked.
  *
  * @param {Array} props.photos - Array of photo objects.
  */
-
 const PhotoList = ({ photos }) => {
-  // State for modal visibility and selected photo
+  // State for modal visibility and currently selected photo
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  // Handler for when a photo is clicked
+  // Callback function for when a photo is clicked
   const handlePhotoClick = useCallback((photoData) => {
     setSelectedPhoto(photoData);
     setIsModalOpen(true);
   }, []);
 
-  // Handler to close the modal
+  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedPhoto(null);
