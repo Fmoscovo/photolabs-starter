@@ -1,0 +1,33 @@
+// frontend/src/styles/PhotoDetailsSkeleton.scss
+
+.photo-details-skeleton {
+  .skeleton-image {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 400px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .skeleton-title,
+  .skeleton-description,
+  .skeleton-author {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 20px;
+    margin: 8px 0;
+  }
+
+  .skeleton-title {
+    width: 60%;
+  }
+
+  .skeleton-description {
+    width: 90%;
+    height: 40px; // assuming description is a bit longer
+  }
+
+  .skeleton-author {
+    width: 40%;
+  }
+}

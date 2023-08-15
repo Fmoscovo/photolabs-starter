@@ -1,0 +1,18 @@
+// frontend/src/styles/PhotoSkeleton.scss
+
+.photo-skeleton {
+  .skeleton-image {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 200px;
+    width: 100%;
+  }
+
+  .skeleton-caption {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 14px;
+    margin: 8px 0;
+    width: 50%;
+  }
+}

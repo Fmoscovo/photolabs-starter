@@ -1,0 +1,101 @@
+@keyframes polygon-in-opposing-corners {
+  from {
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
+  }
+  to {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+}
+
+[data-transition-style="in:polygon:opposing-corners"] {
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) polygon-in-opposing-corners both;
+}
+
+@keyframes polygon-out-opposing-corners {
+  from {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+  to {
+    clip-path: polygon(0 0, 50% 50%, 100% 100%, 50% 50%);
+  }
+}
+
+[data-transition-style="out:polygon:opposing-corners"] {
+  animation: 0.7s cubic-bezier(0.25, 1, 0.3, 1) polygon-out-opposing-corners
+    both;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.liked-photos-modal {
+  background-color: white;
+  width: 60%;
+  height: 80%;
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  position: relative;
+}
+
+.liked-photos-modal__close-button {
+  position: absolute;
+  top: -3px;
+  right: -6px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 1100;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.liked-photos-modal--header {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1e1e1e;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.liked-photos-modal--photos {
+  // Add styling for your photos container here
+}
+
+.dark-mode .liked-photos-modal {
+  background-color: #444;
+  color: #eee;
+}
+
+.dark-mode .liked-photos-modal__close-button {
+  color: #eee;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.dark-mode .liked-photos-modal__header {
+  color: #eee;
+}
+
+@media screen and (min-width: 768px) {
+  // You can adjust responsive styles here
+}

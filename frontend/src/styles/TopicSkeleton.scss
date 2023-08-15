@@ -1,0 +1,19 @@
+// frontend/src/styles/TopicSkeleton.scss
+
+.topic-skeleton {
+  .skeleton-title,
+  .skeleton-slug {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 20px;
+    margin: 8px 0;
+  }
+
+  .skeleton-title {
+    width: 70%;
+  }
+
+  .skeleton-slug {
+    width: 40%;
+  }
+}

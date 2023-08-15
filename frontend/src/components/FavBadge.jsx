@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import FavIcon from "./FavIcon";
 import { useFav } from "./FavContext";
 import "../styles/FavBadge.scss";
+import LikedPhotosModal from "./LikedPhotosModal";
 
 /**
  * FavBadge Component
@@ -19,6 +20,7 @@ const FavBadge = () => {
   const isFavPhotoExist = likedPhotos.length > 0;
   const favCount = likedPhotos.length;
   const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   /**
    * handleClick
@@ -27,10 +29,15 @@ const FavBadge = () => {
    * the user has any favorite photos.
    */
   const handleClick = () => {
-    const message = isFavPhotoExist
-      ? "You have favorites!"
-      : "No photos have been marked as favorite yet.";
-    alert(message);
+    if (isFavPhotoExist) {
+      setIsModalOpen(true);
+    } else {
+      alert("No photos have been marked as favorite yet.");
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -46,7 +53,8 @@ const FavBadge = () => {
         <div className="fav-badge__count">
           <span>{favCount}</span>
         </div>
-      )}
+      )}{" "}
+      <LikedPhotosModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
